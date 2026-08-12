@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Futuro Sustentável | Agro Forte</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #f4f8f2;
+      color: #173b22;
+    }
+
+    /* MENU */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(12, 48, 25, 0.95);
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #8ee05c;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(0, 50, 20, 0.55), rgba(0, 30, 10, 0.65)),
+        url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=2000&q=80")
+        center/cover;
+      display: flex;
+      align-items: center;
+      padding: 100px 7%;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .hero h1 {
+      font-size: clamp(45px, 7vw, 85px);
+      line-height: 1;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: #8ee05c;
+    }
+
+    .hero p {
+      font-size: 21px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      padding: 15px 28px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #78c850;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #5da93b;
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #174b25;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+      background: #e4f5dc;
+    }
+
+    /* SEÇÕES */
+    section {
+      padding: 90px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 40px;
+      color: #174b25;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #58705d;
+      font-size: 18px;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 25px;
+    }
+
+    .card h3 {
+      font-size: 23px;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #627264;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* AGRO */
+    .agro {
+      background: #173d22;
+      color: white;
+    }
+
+    .agro .section-title h2 {
+      color: #9ae66d;
+    }
+
+    .agro .section-title p {
+      color: #d2e4d4;
+    }
+
+    .agro-card {
+      background: #23552e;
+      color: white;
+    }
+
+    .agro-card p {
+      color: #d7e8d8;
+    }
+
+    /* NÚMEROS */
+    .numbers {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      text-align: center;
+    }
+
+    .number {
+      background: #e1f2d9;
+      padding: 35px 15px;
+      border-radius: 20px;
+    }
+
+    .number strong {
+      display: block;
+      font-size: 42px;
+      color: #39822d;
+      margin-bottom: 8px;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background:
+        linear-gradient(rgba(18, 75, 30, 0.85), rgba(18, 75, 30, 0.85)),
+        url("https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1800&q=80")
+        center/cover;
+      color: white;
+    }
+
+    .cta h2 {
+      font-size: 45px;
+      margin-bottom: 20px;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin: auto auto 30px;
+      font-size: 19px;
+      line-height: 1.6;
+    }
+
+    /* RODAPÉ */
+    footer {
+      background: #092111;
+      color: white;
+      text-align: center;
+      padding: 30px;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-box {
+      background: white;
+      max-width: 500px;
+      padding: 35px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .modal-box h2 {
+      margin-bottom: 15px;
+      color: #174b25;
+    }
+
+    .close {
+      margin-top: 20px;
+      background: #174b25;
+      color: white;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      nav a {
+        margin: 0 7px;
+        font-size: 13px;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MENU -->
+  <header>
+    <div class="logo">🌱 AgroFuturo</div>
+
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#sustentabilidade">Sustentabilidade</a>
+      <a href="#agro">Agro Forte</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1>Futuro <span>Sustentável</span></h1>
+
+      <p>
+        Tecnologia, inovação e agricultura trabalhando juntas
+        para construir um futuro mais verde, produtivo e
+        sustentável.
+      </p>
+
+      <div class="buttons">
+        <a href="#sustentabilidade" class="btn btn-primary">
+          🌱 Conheça nossas ideias
+        </a>
+
+        <a href="#agro" class="btn btn-secondary">
+          🚜 Agro Forte
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUSTENTABILIDADE -->
+  <section id="sustentabilidade">
+
+    <div class="section-title">
+      <h2>🌎 Um futuro mais sustentável</h2>
+      <p>
+        Soluções que ajudam o planeta e fortalecem a produção.
+      </p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=900&q=80"
+          alt="Energia renovável"
+        >
+
+        <div class="card-content">
+          <h3>☀️ Energia Limpa</h3>
+          <p>
+            Investimento em energia solar, eólica e outras
+            fontes renováveis para reduzir impactos ambientais.
+          </p>
+
+          <button class="btn btn-primary" onclick="abrirModal('Energia Limpa')">
+            Saiba mais
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=900&q=80"
+          alt="Agricultura sustentável"
+        >
+
+        <div class="card-content">
+          <h3>🌾 Agricultura Sustentável</h3>
+          <p>
+            Técnicas modernas para produzir alimentos preservando
+            o solo, a água e a biodiversidade.
+          </p>
+
+          <button class="btn btn-primary" onclick="abrirModal('Agricultura Sustentável')">
+            Saiba mais
+          </button>
+        </div>
+      </div>
+
+      <div class="card">
+        <img
+          src="https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=900&q=80"
+          alt="Floresta"
+        >
+
+        <div class="card-content">
+          <h3>🌳 Preservação</h3>
+          <p>
+            Proteção das florestas e recuperação de áreas
+            degradadas para manter nossos ecossistemas vivos.
+          </p>
+
+          <button class="btn btn-primary" onclick="abrirModal('Preservação Ambiental')">
+            Saiba mais
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AGRO FORTE -->
+  <section class="agro" id="agro">
+
+    <div class="section-title">
+      <h2>🚜 Agro Forte</h2>
+      <p>
+        Tecnologia no campo para produzir mais e melhor.
+      </p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card agro-card">
+        <img
+          src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?auto=format&fit=crop&w=900&q=80"
+          alt="Tecnologia agrícola"
+        >
+
+        <div class="card-content">
+          <h3>🤖 Tecnologia no Campo</h3>
+          <p>
+            Drones, sensores, máquinas inteligentes e análise
+            de dados transformando a agricultura.
+          </p>
+
+          <button class="btn btn-primary" onclick="abrirModal('Tecnologia no Campo')">
+            Descobrir
+          </button>
+        </div>
+      </div>
+
+      <div class="card agro-card">
+        <img
+          src="https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?auto=format&fit=crop&w=900&q=80"
+          alt="Plantação"
+        >
+
+        <div class="card-content">
+          <h3>💧 Uso Inteligente da Água</h3>
+          <p>
+            Irrigação eficiente e monitoramento para reduzir
+            desperdícios e aumentar a produtividade.
+          </p>
+
+          <button class="btn btn-primary" onclick="abrirModal('Uso Inteligente da Água')">
+            Descobrir
+          </button>
+        </div>
+      </div>
+
+      <div class="card agro-card">
+        <img
+          src="https://images.unsplash.com/photo-1592982537447-6f2a6a0a4f0d?auto=format&fit=crop&w=900&q=80"
+          alt="Agricultor"
+        >
+
+        <div class="card-content">
+          <h3>👨‍🌾 Valorização do Produtor</h3>
+          <p>
+            Conhecimento, inovação e novas oportunidades para
+            fortalecer quem trabalha no campo.
+          </p>
+
+          <button class="btn btn-primary" onclick="abrirModal('Valorização do Produtor')">
+            Descobrir
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NÚMEROS -->
+  <section>
+
+    <div class="section-title">
+      <h2>🌱 Nosso impacto</h2>
+      <p>Pequenas ações podem gerar grandes transformações.</p>
+    </div>
+
+    <div class="numbers">
+
+      <div class="number">
+        <strong>100%</strong>
+        Energia limpa
+      </div>
+
+      <div class="number">
+        <strong>50+</strong>
+        Projetos verdes
+      </div>
+
+      <div class="number">
+        <strong>10K</strong>
+        Árvores preservadas
+      </div>
+
+      <div class="number">
+        <strong>24h</strong>
+        Inovação contínua
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contato">
+
+    <h2>O futuro começa hoje.</h2>
+
+    <p>
+      Vamos construir uma agricultura forte, tecnológica e
+      sustentável para as próximas gerações.
+    </p>
+
+    <button class="btn btn-primary" onclick="mostrarMensagem()">
+      🌎 Fazer parte dessa mudança
+    </button>
+
+  </section>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <p>© 2026 AgroFuturo — Futuro Sustentável & Agro Forte 🌱</p>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+
+    <div class="modal-box">
+      <h2 id="modalTitulo">Título</h2>
+
+      <p>
+        Essa iniciativa busca unir inovação, sustentabilidade
+        e desenvolvimento para criar soluções melhores para
+        o campo e para o planeta.
+      </p>
+
+      <button class="btn close" onclick="fecharModal()">
+        Fechar
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    function abrirModal(titulo) {
+      document.getElementById("modalTitulo").textContent = titulo;
+      document.getElementById("modal").style.display = "flex";
+    }
+
+    function fecharModal() {
+      document.getElementById("modal").style.display = "none";
+    }
+
+    function mostrarMensagem() {
+      alert(
+        "🌱 Obrigado por apoiar um futuro sustentável e um Agro Forte!"
+      );
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("modal");
+
+      if (event.target === modal) {
+        fecharModal();
+      }
+    };
+  </script>
+
+</body>
+</html>
